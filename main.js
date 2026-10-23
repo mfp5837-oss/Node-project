@@ -18,11 +18,17 @@ const renderer = new THREE.WebGLRenderer({
 });
 scene.add(cube);
 
-const sphereGeometry = new THREE.SphereGeometry(8, 32, 32);
-const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xdb0f94 });
-const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-sphere.position.x = 28;
-scene.add(sphere);
+const xMaterial = new THREE.MeshBasicMaterial({ color: 0xdb0f94 });
+const barGeometry = new THREE.PlaneGeometry(20, 2);
+const bar1 = new THREE.Mesh(barGeometry, xMaterial);
+bar1.rotation.z = Math.PI / 4;
+const bar2 = new THREE.Mesh(barGeometry, xMaterial);
+bar2.rotation.z = -Math.PI / 4;
+
+bar1.position.x = 28;
+bar2.position.x = 28;
+scene.add(bar1);
+scene.add(bar2);
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -55,8 +61,8 @@ function animate() {
   // Movement
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.01;
-  sphere.rotation.x += 0.01;
-  sphere.rotation.x += 0.01;
+  bar1.rotation.x += 0.01;
+  bar2.rotation.y += 0.01;
   cone.rotation.x += 0.01;
   torus.position.x += 0.23;
   torus.rotation.y -= 0.07;

@@ -5,6 +5,7 @@ import * as THREE from "three";
 const geometry = new THREE.BoxGeometry(10, 10, 10);
 const material = new THREE.MeshBasicMaterial({ color: 0x03fcc2 });
 const cube = new THREE.Mesh(geometry, material);
+const clickSound = new Audio("images/playstation-slogan.mp3");
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -16,7 +17,23 @@ const camera = new THREE.PerspectiveCamera(
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#bg"),
 });
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
 scene.add(cube);
+window.addEventListener("click", (event) => {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects([cube]);
+
+  if (intersects.length > 0) {
+    clickSound.currentTime = 0;
+    clickSound.play();
+  }
+});
 
 const xMaterial = new THREE.MeshBasicMaterial({ color: 0xdb0f94 });
 const barGeometry = new THREE.PlaneGeometry(20, 2);

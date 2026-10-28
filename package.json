@@ -7,14 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy" :"gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "vite": "^8.3.4"
   },
   "dependencies": {
+    "procedural-animals": "github:majidmanzarpour/threejs-procedural-animals",
     "three": "^0.186.1"
   }
-
 }

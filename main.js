@@ -5,7 +5,7 @@ import * as THREE from "three";
 const geometry = new THREE.BoxGeometry(10, 10, 10);
 const material = new THREE.MeshBasicMaterial({ color: 0x03fcc2 });
 const cube = new THREE.Mesh(geometry, material);
-const clickSound = new Audio("images/playstation-slogan.mp3");
+const clickSound = new Audio("images/game.mp3");
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
